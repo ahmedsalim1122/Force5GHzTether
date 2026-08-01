@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: Force5GHzTether
     steps:
       - uses: actions/checkout@v4
       
@@ -18,11 +21,10 @@ jobs:
           
       - name: Build tweak
         run: |
-          cd Force5GHzTether
           make package
           
       - name: Upload .deb
         uses: actions/upload-artifact@v4
         with:
           name: Force5GHzTether-deb
-          path: Force5GHzTether/packages/*.deb
+          path: packages/*.deb
