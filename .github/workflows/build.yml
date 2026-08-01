@@ -1,0 +1,28 @@
+name: Build Force5GHzTether
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Theos
+        run: |
+          git clone --depth=1 https://github.com/theos/theos.git ~/.theos
+          echo "THEOS=$HOME/.theos" >> $GITHUB_ENV
+          echo "$HOME/.theos/bin" >> $GITHUB_PATH
+          
+      - name: Build tweak
+        run: |
+          cd Force5GHzTether
+          make package
+          
+      - name: Upload .deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: Force5GHzTether-deb
+          path: Force5GHzTether/packages/*.deb
