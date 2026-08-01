@@ -18,7 +18,6 @@ jobs:
           
       - name: Build tweak
         run: |
-          cd Force5GHzTether
           make package
           
       - name: Upload .deb
