@@ -13,6 +13,8 @@ jobs:
       - name: Install Theos
         run: |
           git clone --depth=1 https://github.com/theos/theos.git ~/.theos
+          # Ensure dm.pl is executable
+          chmod +x ~/.theos/bin/dm.pl 2>/dev/null || true
           
       - name: Build tweak
         env:
