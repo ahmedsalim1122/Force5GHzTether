@@ -18,6 +18,7 @@ jobs:
           
       - name: Build tweak
         run: |
+          export THEOS=~/.theos
           make package
           
       - name: Upload .deb
