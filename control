@@ -1,0 +1,9 @@
+Package: com.example.force5ghztether
+Name: Force5GHzTether
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: Forces 5GHz WiFi tethering/hotspot
+Maintainer: System Administrator
+Author: System Administrator
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
