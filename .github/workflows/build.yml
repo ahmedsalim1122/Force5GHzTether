@@ -13,9 +13,11 @@ jobs:
       - name: Install Theos
         run: |
           git clone --depth=1 https://github.com/theos/theos.git ~/.theos
-          # Install dm.pl from theos vendor
-          cp ~/.theos/vendor/dm.pl ~/.theos/bin/dm.pl 2>/dev/null || true
+          # Find and copy dm.pl
+          find ~/.theos -name "dm.pl" -type f 2>/dev/null
+          cp $(find ~/.theos -name "dm.pl" -type f 2>/dev/null | head -1) ~/.theos/bin/dm.pl 2>/dev/null || true
           chmod +x ~/.theos/bin/dm.pl 2>/dev/null || true
+          ls -la ~/.theos/bin/dm.pl
           
       - name: Build tweak
         env:
